@@ -18,7 +18,7 @@ class HomePageAppBarWidget extends StatefulWidget
 }
 
 class _HomePageAppBarWidgetState extends State<HomePageAppBarWidget> {
-  var taskList = TaskListController.listTask;
+  final taskList = TaskListController.listTask;
   late TextEditingController controller;
   late FocusNode focusNode;
   String name = '';

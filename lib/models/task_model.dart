@@ -2,11 +2,11 @@ import 'package:uuid/uuid.dart';
 
 class TaskModel {
   final String id;
-  final String name;
-  final DateTime createdDate;
-  final bool isCompleted;
+  String name;
+  DateTime createdDate;
+  bool isCompleted;
 
-  const TaskModel({
+  TaskModel({
     required this.id,
     required this.name,
     required this.createdDate,

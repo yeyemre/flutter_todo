@@ -1,14 +1,16 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:todo_app/controller/task_model_controller.dart';
 import 'package:todo_app/models/task_model.dart';
 
 class TaskListController extends GetxController {
+  final taskModelController = Get.put(TaskModelController());
+
   static final listTask = [
-    TaskModel(
-        id: 'id',
-        name: 'Yunus Emre',
-        createdDate: DateTime.now(),
-        isCompleted: false),
+    TaskModel.createInstance(
+      name: 'Yunus Emre',
+      createdDate: DateTime.now(),
+      isCompleted: false,
+    ),
   ].obs;
 
   void addTask(TaskModel taskModel) {
@@ -20,10 +22,12 @@ class TaskListController extends GetxController {
   }
 
   void changeTaskStatus(TaskModel taskModel) {
-    TaskModel model = listTask.firstWhere((element) => taskModel == element);
+    TaskModel model = listTask.firstWhere((element) => element == taskModel);
 
-
-
-    debugPrint('Metod çalıştı. isim: ${taskModel.name} mevcut durum: ${taskModel.isCompleted}');
+    if (model.isCompleted == true) {
+      model.isCompleted = false;
+    } else {
+      model.isCompleted = true;
+    }
   }
 }
